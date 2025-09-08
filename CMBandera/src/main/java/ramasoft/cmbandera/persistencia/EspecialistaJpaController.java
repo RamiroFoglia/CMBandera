@@ -1,3 +1,4 @@
+
 package ramasoft.cmbandera.persistencia;
 
 import java.io.Serializable;
@@ -18,11 +19,9 @@ public class EspecialistaJpaController implements Serializable {
     public EspecialistaJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-
     public EspecialistaJpaController() {
         emf = Persistence.createEntityManagerFactory("consultoriosJPAPU");
-    }
-    
+    }    
     private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {

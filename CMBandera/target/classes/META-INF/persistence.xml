@@ -5,8 +5,10 @@
     <class>ramasoft.cmbandera.logica.Especialista</class>
     <class>ramasoft.cmbandera.logica.Persona</class>
     <class>ramasoft.cmbandera.logica.Paciente</class>
+    <class>ramasoft.cmbandera.logica.Consulta</class>
+    <class>ramasoft.cmbandera.logica.HistoriaClinica</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/consulmedicos?serverTimezone=UTC"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/consultoriosmedicos?serverTimezone=UTC"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.password" value=""/>

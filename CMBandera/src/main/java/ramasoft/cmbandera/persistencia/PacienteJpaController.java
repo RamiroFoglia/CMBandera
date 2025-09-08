@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package ramasoft.cmbandera.persistencia;
 
 import java.io.Serializable;
@@ -16,10 +12,7 @@ import javax.persistence.criteria.Root;
 import ramasoft.cmbandera.logica.Paciente;
 import ramasoft.cmbandera.persistencia.exceptions.NonexistentEntityException;
 
-/**
- *
- * @author BarrileteCosmico
- */
+
 public class PacienteJpaController implements Serializable {
 
     public PacienteJpaController(EntityManagerFactory emf) {

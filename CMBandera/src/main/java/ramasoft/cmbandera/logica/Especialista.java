@@ -10,7 +10,8 @@ import org.eclipse.persistence.annotations.PrimaryKey;
 @PrimaryKeyJoinColumn(referencedColumnName = "id_persona")
 public class Especialista extends Persona {
 
-    //Variables   
+    //Variables  
+    @Basic
     private String matricula;
     private Especialidades especialidad;
 

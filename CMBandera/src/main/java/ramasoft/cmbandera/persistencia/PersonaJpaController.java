@@ -1,3 +1,4 @@
+
 package ramasoft.cmbandera.persistencia;
 
 import java.io.Serializable;

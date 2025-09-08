@@ -40,4 +40,39 @@ public class Controladora {
      public ArrayList<Especialista> traerListaEspecialista(){
          return controlPersi.traerListaEspecialista();
      }
+     
+     
+     //Metodos para la clase Paciente     
+     public void crearPaciente(Paciente pa){
+         controlPersi.crearPaciente(pa);
+     }
+     public void eliminarPaciente(int id){
+         controlPersi.eliminarPaciente(id);
+     }
+     public void editarPaciente(Paciente pa){
+         controlPersi.editarPaciente(pa);
+     }
+     public Paciente traerPaciente(int id){
+         return controlPersi.traerPaciente(id);
+     }
+     public ArrayList<Paciente> traerListaPacientes(){
+         return controlPersi.traerListaPacientes();
+     }
+     
+     //Metodos para la clase Consulta     
+     public void crearConsulta(Consulta c){
+         controlPersi.crearConsulta(c);
+     }
+     public void eliminarConsulta(int id){
+         controlPersi.eliminarConsulta(id);
+     }
+     public void editarConsulta(Consulta c){
+         controlPersi.editarConsulta(c);
+     }
+     public Consulta traerConsulta(int id){
+         return controlPersi.traerConsulta(id);
+     }
+     public ArrayList<Consulta> traerListaConsulta(){
+         return controlPersi.traerListaConsulta();
+     }
 }
