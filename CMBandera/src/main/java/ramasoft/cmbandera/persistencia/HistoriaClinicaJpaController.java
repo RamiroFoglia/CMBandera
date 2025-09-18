@@ -39,18 +39,18 @@ public class HistoriaClinicaJpaController implements Serializable {
             em.getTransaction().begin();
             ArrayList<Consulta> attachedConsultas = new ArrayList<Consulta>();
             for (Consulta consultasConsultaToAttach : historiaClinica.getConsultas()) {
-                consultasConsultaToAttach = em.getReference(consultasConsultaToAttach.getClass(), consultasConsultaToAttach.getId());
+                consultasConsultaToAttach = em.getReference(consultasConsultaToAttach.getClass(), consultasConsultaToAttach.getId_consulta());
                 attachedConsultas.add(consultasConsultaToAttach);
             }
             historiaClinica.setConsultas(attachedConsultas);
             em.persist(historiaClinica);
             for (Consulta consultasConsulta : historiaClinica.getConsultas()) {
-                HistoriaClinica oldHistoCliOfConsultasConsulta = consultasConsulta.getHistoCli();
-                consultasConsulta.setHistoCli(historiaClinica);
+                HistoriaClinica oldHisClinicaOfConsultasConsulta = consultasConsulta.getHisClinica();
+                consultasConsulta.setHisClinica(historiaClinica);
                 consultasConsulta = em.merge(consultasConsulta);
-                if (oldHistoCliOfConsultasConsulta != null) {
-                    oldHistoCliOfConsultasConsulta.getConsultas().remove(consultasConsulta);
-                    oldHistoCliOfConsultasConsulta = em.merge(oldHistoCliOfConsultasConsulta);
+                if (oldHisClinicaOfConsultasConsulta != null) {
+                    oldHisClinicaOfConsultasConsulta.getConsultas().remove(consultasConsulta);
+                    oldHisClinicaOfConsultasConsulta = em.merge(oldHisClinicaOfConsultasConsulta);
                 }
             }
             em.getTransaction().commit();
@@ -71,7 +71,7 @@ public class HistoriaClinicaJpaController implements Serializable {
             ArrayList<Consulta> consultasNew = historiaClinica.getConsultas();
             ArrayList<Consulta> attachedConsultasNew = new ArrayList<Consulta>();
             for (Consulta consultasNewConsultaToAttach : consultasNew) {
-                consultasNewConsultaToAttach = em.getReference(consultasNewConsultaToAttach.getClass(), consultasNewConsultaToAttach.getId());
+                consultasNewConsultaToAttach = em.getReference(consultasNewConsultaToAttach.getClass(), consultasNewConsultaToAttach.getId_consulta());
                 attachedConsultasNew.add(consultasNewConsultaToAttach);
             }
             consultasNew = attachedConsultasNew;
@@ -79,18 +79,18 @@ public class HistoriaClinicaJpaController implements Serializable {
             historiaClinica = em.merge(historiaClinica);
             for (Consulta consultasOldConsulta : consultasOld) {
                 if (!consultasNew.contains(consultasOldConsulta)) {
-                    consultasOldConsulta.setHistoCli(null);
+                    consultasOldConsulta.setHisClinica(null);
                     consultasOldConsulta = em.merge(consultasOldConsulta);
                 }
             }
             for (Consulta consultasNewConsulta : consultasNew) {
                 if (!consultasOld.contains(consultasNewConsulta)) {
-                    HistoriaClinica oldHistoCliOfConsultasNewConsulta = consultasNewConsulta.getHistoCli();
-                    consultasNewConsulta.setHistoCli(historiaClinica);
+                    HistoriaClinica oldHisClinicaOfConsultasNewConsulta = consultasNewConsulta.getHisClinica();
+                    consultasNewConsulta.setHisClinica(historiaClinica);
                     consultasNewConsulta = em.merge(consultasNewConsulta);
-                    if (oldHistoCliOfConsultasNewConsulta != null && !oldHistoCliOfConsultasNewConsulta.equals(historiaClinica)) {
-                        oldHistoCliOfConsultasNewConsulta.getConsultas().remove(consultasNewConsulta);
-                        oldHistoCliOfConsultasNewConsulta = em.merge(oldHistoCliOfConsultasNewConsulta);
+                    if (oldHisClinicaOfConsultasNewConsulta != null && !oldHisClinicaOfConsultasNewConsulta.equals(historiaClinica)) {
+                        oldHisClinicaOfConsultasNewConsulta.getConsultas().remove(consultasNewConsulta);
+                        oldHisClinicaOfConsultasNewConsulta = em.merge(oldHisClinicaOfConsultasNewConsulta);
                     }
                 }
             }
@@ -125,7 +125,7 @@ public class HistoriaClinicaJpaController implements Serializable {
             }
             ArrayList<Consulta> consultas = historiaClinica.getConsultas();
             for (Consulta consultasConsulta : consultas) {
-                consultasConsulta.setHistoCli(null);
+                consultasConsulta.setHisClinica(null);
                 consultasConsulta = em.merge(consultasConsulta);
             }
             em.remove(historiaClinica);

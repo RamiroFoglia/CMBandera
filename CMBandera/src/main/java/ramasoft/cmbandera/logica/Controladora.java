@@ -41,22 +41,21 @@ public class Controladora {
          return controlPersi.traerListaEspecialista();
      }
      
-     
      //Metodos para la clase Paciente     
-     public void crearPaciente(Paciente pa){
-         controlPersi.crearPaciente(pa);
+     public void crearPaciente(Paciente p){
+         controlPersi.crearPaciente(p);
      }
      public void eliminarPaciente(int id){
          controlPersi.eliminarPaciente(id);
      }
-     public void editarPaciente(Paciente pa){
-         controlPersi.editarPaciente(pa);
-     }
+     public void editarPaciente(Paciente p){
+        controlPersi.editarPaciente(p);        
+    }
      public Paciente traerPaciente(int id){
          return controlPersi.traerPaciente(id);
      }
-     public ArrayList<Paciente> traerListaPacientes(){
-         return controlPersi.traerListaPacientes();
+     public ArrayList<Paciente> traerListaPaciente(){
+         return controlPersi.traerListaPacinete();
      }
      
      //Metodos para la clase Consulta     
@@ -67,12 +66,30 @@ public class Controladora {
          controlPersi.eliminarConsulta(id);
      }
      public void editarConsulta(Consulta c){
-         controlPersi.editarConsulta(c);
-     }
+        controlPersi.editarConsulta(c);        
+    }
      public Consulta traerConsulta(int id){
          return controlPersi.traerConsulta(id);
      }
      public ArrayList<Consulta> traerListaConsulta(){
          return controlPersi.traerListaConsulta();
      }
+     
+     //Metodos para la clase HistoriaClinica     
+     public void crearHistoriaClinica(HistoriaClinica hc){
+         controlPersi.crearHistoriaClinica(hc);
+     }
+     public void eliminarHistoriaClinica(int id){
+         controlPersi.eliminarHistoriaClinica(id);
+     }
+     public void editarHistoriaClinica(HistoriaClinica c){
+        controlPersi.editarHistoriaClinica(c);        
+    }
+     public HistoriaClinica traerHistoriaClinica(int id){
+         return controlPersi.traerHistoriaClinica(id);
+     }
+     public ArrayList<HistoriaClinica> traerListaHistoriaClinica(){
+         return controlPersi.traerListaHistoriaClinica();
+     }
+     
 }

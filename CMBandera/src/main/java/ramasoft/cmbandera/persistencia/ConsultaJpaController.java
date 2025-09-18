@@ -35,15 +35,15 @@ public class ConsultaJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            HistoriaClinica histoCli = consulta.getHistoCli();
-            if (histoCli != null) {
-                histoCli = em.getReference(histoCli.getClass(), histoCli.getId());
-                consulta.setHistoCli(histoCli);
+            HistoriaClinica hisClinica = consulta.getHisClinica();
+            if (hisClinica != null) {
+                hisClinica = em.getReference(hisClinica.getClass(), hisClinica.getId());
+                consulta.setHisClinica(hisClinica);
             }
             em.persist(consulta);
-            if (histoCli != null) {
-                histoCli.getConsultas().add(consulta);
-                histoCli = em.merge(histoCli);
+            if (hisClinica != null) {
+                hisClinica.getConsultas().add(consulta);
+                hisClinica = em.merge(hisClinica);
             }
             em.getTransaction().commit();
         } finally {
@@ -58,27 +58,27 @@ public class ConsultaJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Consulta persistentConsulta = em.find(Consulta.class, consulta.getId());
-            HistoriaClinica histoCliOld = persistentConsulta.getHistoCli();
-            HistoriaClinica histoCliNew = consulta.getHistoCli();
-            if (histoCliNew != null) {
-                histoCliNew = em.getReference(histoCliNew.getClass(), histoCliNew.getId());
-                consulta.setHistoCli(histoCliNew);
+            Consulta persistentConsulta = em.find(Consulta.class, consulta.getId_consulta());
+            HistoriaClinica hisClinicaOld = persistentConsulta.getHisClinica();
+            HistoriaClinica hisClinicaNew = consulta.getHisClinica();
+            if (hisClinicaNew != null) {
+                hisClinicaNew = em.getReference(hisClinicaNew.getClass(), hisClinicaNew.getId());
+                consulta.setHisClinica(hisClinicaNew);
             }
             consulta = em.merge(consulta);
-            if (histoCliOld != null && !histoCliOld.equals(histoCliNew)) {
-                histoCliOld.getConsultas().remove(consulta);
-                histoCliOld = em.merge(histoCliOld);
+            if (hisClinicaOld != null && !hisClinicaOld.equals(hisClinicaNew)) {
+                hisClinicaOld.getConsultas().remove(consulta);
+                hisClinicaOld = em.merge(hisClinicaOld);
             }
-            if (histoCliNew != null && !histoCliNew.equals(histoCliOld)) {
-                histoCliNew.getConsultas().add(consulta);
-                histoCliNew = em.merge(histoCliNew);
+            if (hisClinicaNew != null && !hisClinicaNew.equals(hisClinicaOld)) {
+                hisClinicaNew.getConsultas().add(consulta);
+                hisClinicaNew = em.merge(hisClinicaNew);
             }
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                int id = consulta.getId();
+                int id = consulta.getId_consulta();
                 if (findConsulta(id) == null) {
                     throw new NonexistentEntityException("The consulta with id " + id + " no longer exists.");
                 }
@@ -99,14 +99,14 @@ public class ConsultaJpaController implements Serializable {
             Consulta consulta;
             try {
                 consulta = em.getReference(Consulta.class, id);
-                consulta.getId();
+                consulta.getId_consulta();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The consulta with id " + id + " no longer exists.", enfe);
             }
-            HistoriaClinica histoCli = consulta.getHistoCli();
-            if (histoCli != null) {
-                histoCli.getConsultas().remove(consulta);
-                histoCli = em.merge(histoCli);
+            HistoriaClinica hisClinica = consulta.getHisClinica();
+            if (hisClinica != null) {
+                hisClinica.getConsultas().remove(consulta);
+                hisClinica = em.merge(hisClinica);
             }
             em.remove(consulta);
             em.getTransaction().commit();

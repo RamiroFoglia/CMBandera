@@ -1,12 +1,8 @@
+ramasoft\cmbandera\logica\Especialista.class
 ramasoft\cmbandera\logica\Paciente.class
 ramasoft\cmbandera\logica\Persona.class
-ramasoft\cmbandera\persistencia\ConsultaJpaController.class
-ramasoft\cmbandera\logica\HistoriaClinica_.class
-ramasoft\cmbandera\persistencia\HistoriaClinicaJpaController.class
 ramasoft\cmbandera\logica\Especialidades.class
 ramasoft\cmbandera\logica\HistoriaClinica.class
-ramasoft\cmbandera\logica\Consulta.class
-ramasoft\cmbandera\logica\Especialista.class
 ramasoft\cmbandera\Principal.class
-ramasoft\cmbandera\logica\Consulta_.class
+ramasoft\cmbandera\logica\Consulta.class
 ramasoft\cmbandera\logica\TipoSangre.class

@@ -73,6 +73,6 @@ public abstract class Persona implements Serializable {
         return "Persona{" + "Id= " + id_persona + ", nombre= " + nombre + ", apellido= " + apellido + ", celular= " + celular + ", fechaNac=" + fechaNac + '}';
     } 
     public String identificarse(){
-        return this.getNombre() + " " + this.getApellido();
+        return this.getApellido() + ", " + this.getNombre();
     }
 }

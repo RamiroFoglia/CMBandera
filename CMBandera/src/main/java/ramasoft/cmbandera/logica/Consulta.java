@@ -1,5 +1,4 @@
 package ramasoft.cmbandera.logica;
-
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -12,12 +11,13 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+
 @Entity
 public class Consulta implements Serializable {
     //Variables
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.AUTO)        
+    private int id_consulta;
     @Temporal(TemporalType.DATE)
     private Date fecha;
     @Basic
@@ -25,26 +25,20 @@ public class Consulta implements Serializable {
     @OneToOne
     private Especialista doctor;
     @ManyToOne
-    private HistoriaClinica histoCli;
+    HistoriaClinica hisClinica;
     
     //Constructores    
     public Consulta() {
     }
-    public Consulta(int id, Date fecha, String detalle, Especialista doctor, HistoriaClinica histoCli) {
-        this.id = id;
+    public Consulta(int id_consulta, Date fecha, String detalle, Especialista doctor, HistoriaClinica hisClinica) {
+        this.id_consulta = id_consulta;
         this.fecha = fecha;
         this.detalle = detalle;
         this.doctor = doctor;
-        this.histoCli = histoCli;
+        this.hisClinica = hisClinica;
     }
-        
-    //Metodos
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        this.id = id;
-    }
+       
+    //Metodos   
     public Date getFecha() {
         return fecha;
     }
@@ -63,24 +57,23 @@ public class Consulta implements Serializable {
     public void setDoctor(Especialista doctor) {
         this.doctor = doctor;
     }
-
-    public HistoriaClinica getHistoCli() {
-        return histoCli;
+    public int getId_consulta() {
+        return id_consulta;
     }
-
-    public void setHistoCli(HistoriaClinica histoCli) {
-        this.histoCli = histoCli;
+    public void setId_consulta(int id_consulta) {
+        this.id_consulta = id_consulta;
     }
+    public HistoriaClinica getHisClinica() {
+        return hisClinica;
+    }
+    public void setHisClinica(HistoriaClinica hisClinica) {
+        this.hisClinica = hisClinica;
+    }    
 
     @Override
     public String toString() {
-        return "Consulta{" + "id=" + id + ", fecha=" + fecha + ", detalle=" + detalle + ", doctor=" + doctor + ", histoCli=" + histoCli + '}';
-    }
-       
-    
-    public String armarConsulta(){
-        String consulta = "\t[Fecha]= "+this.fecha+"\t[Doctor/a]= "+ this.doctor.identificarse()+"\t[Detalle]= " + this.detalle;
-        return consulta;      
-        
-    }
+        return "Fecha= " + fecha + "----- Detalle= " + detalle + "----- Doctor=" + doctor + '}';
+    }   
+
+   
 }
