@@ -5,6 +5,7 @@ package ramasoft.cmbandera.logica;
  * @author BarrileteCosmico
  */
 public enum Especialidades {
+    Seleccionar,
     DERMATOLOGIA_ESTETICA,
     ENDOCRINOLOGIA,    
     GINECOLOGIA,

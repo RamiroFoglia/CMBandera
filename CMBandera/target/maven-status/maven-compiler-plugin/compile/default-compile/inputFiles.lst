@@ -1,8 +1,20 @@
-C:\Users\BarrileteCosmico\OneDrive\Documentos\NetBeansProjects\CMBandera\src\main\java\ramasoft\cmbandera\logica\Especialista.java
-C:\Users\BarrileteCosmico\OneDrive\Documentos\NetBeansProjects\CMBandera\src\main\java\ramasoft\cmbandera\logica\Persona.java
-C:\Users\BarrileteCosmico\OneDrive\Documentos\NetBeansProjects\CMBandera\src\main\java\ramasoft\cmbandera\logica\TipoSangre.java
-C:\Users\BarrileteCosmico\OneDrive\Documentos\NetBeansProjects\CMBandera\src\main\java\ramasoft\cmbandera\logica\Consulta.java
-C:\Users\BarrileteCosmico\OneDrive\Documentos\NetBeansProjects\CMBandera\src\main\java\ramasoft\cmbandera\logica\HistoriaClinica.java
-C:\Users\BarrileteCosmico\OneDrive\Documentos\NetBeansProjects\CMBandera\src\main\java\ramasoft\cmbandera\logica\Paciente.java
-C:\Users\BarrileteCosmico\OneDrive\Documentos\NetBeansProjects\CMBandera\src\main\java\ramasoft\cmbandera\logica\Especialidades.java
-C:\Users\BarrileteCosmico\OneDrive\Documentos\NetBeansProjects\CMBandera\src\main\java\ramasoft\cmbandera\Principal.java
+C:\Users\Ramiro Foglia\Documents\NetBeansProjects\CMBandera\src\main\java\ramasoft\cmbandera\persistencia\exceptions\NonexistentEntityException.java
+C:\Users\Ramiro Foglia\Documents\NetBeansProjects\CMBandera\src\main\java\ramasoft\cmbandera\persistencia\PersonaJpaController.java
+C:\Users\Ramiro Foglia\Documents\NetBeansProjects\CMBandera\src\main\java\ramasoft\cmbandera\persistencia\exceptions\PreexistingEntityException.java
+C:\Users\Ramiro Foglia\Documents\NetBeansProjects\CMBandera\src\main\java\ramasoft\cmbandera\persistencia\HistoriaClinicaJpaController.java
+C:\Users\Ramiro Foglia\Documents\NetBeansProjects\CMBandera\src\main\java\ramasoft\cmbandera\logica\Especialidades.java
+C:\Users\Ramiro Foglia\Documents\NetBeansProjects\CMBandera\src\main\java\ramasoft\cmbandera\persistencia\exceptions\IllegalOrphanException.java
+C:\Users\Ramiro Foglia\Documents\NetBeansProjects\CMBandera\src\main\java\ramasoft\cmbandera\logica\HistoriaClinica.java
+C:\Users\Ramiro Foglia\Documents\NetBeansProjects\CMBandera\src\main\java\ramasoft\cmbandera\ventanas\Especialistas.java
+C:\Users\Ramiro Foglia\Documents\NetBeansProjects\CMBandera\src\main\java\ramasoft\cmbandera\logica\Especialista.java
+C:\Users\Ramiro Foglia\Documents\NetBeansProjects\CMBandera\src\main\java\ramasoft\cmbandera\logica\TipoSangre.java
+C:\Users\Ramiro Foglia\Documents\NetBeansProjects\CMBandera\src\main\java\ramasoft\cmbandera\logica\Consulta.java
+C:\Users\Ramiro Foglia\Documents\NetBeansProjects\CMBandera\src\main\java\ramasoft\cmbandera\ventanas\Inicio.java
+C:\Users\Ramiro Foglia\Documents\NetBeansProjects\CMBandera\src\main\java\ramasoft\cmbandera\Principal.java
+C:\Users\Ramiro Foglia\Documents\NetBeansProjects\CMBandera\src\main\java\ramasoft\cmbandera\persistencia\ControladoraPersistencia.java
+C:\Users\Ramiro Foglia\Documents\NetBeansProjects\CMBandera\src\main\java\ramasoft\cmbandera\persistencia\ConsultaJpaController.java
+C:\Users\Ramiro Foglia\Documents\NetBeansProjects\CMBandera\src\main\java\ramasoft\cmbandera\persistencia\PacienteJpaController.java
+C:\Users\Ramiro Foglia\Documents\NetBeansProjects\CMBandera\src\main\java\ramasoft\cmbandera\logica\Paciente.java
+C:\Users\Ramiro Foglia\Documents\NetBeansProjects\CMBandera\src\main\java\ramasoft\cmbandera\logica\Controladora.java
+C:\Users\Ramiro Foglia\Documents\NetBeansProjects\CMBandera\src\main\java\ramasoft\cmbandera\persistencia\EspecialistaJpaController.java
+C:\Users\Ramiro Foglia\Documents\NetBeansProjects\CMBandera\src\main\java\ramasoft\cmbandera\logica\Persona.java

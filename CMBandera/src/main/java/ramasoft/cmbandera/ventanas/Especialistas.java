@@ -12,22 +12,21 @@ import ramasoft.cmbandera.logica.Especialidades;
 
 public class Especialistas extends javax.swing.JFrame {
 
-    
     public Especialistas() {
         initComponents();
         setResizable(false);
-        setSize(640, 480);
+        setSize(680, 480);
         setTitle("Especialistas");
         setLocationRelativeTo(null);
         //Poner una imagen de fondo
         ImageIcon fondoPantalla = new ImageIcon("src/main/java/Imagenes/img4.png");
-            Icon icono = new ImageIcon(fondoPantalla.getImage().getScaledInstance(etiqueta_FondPantallaEsp.getWidth(), etiqueta_FondPantallaEsp.getHeight(), Image.SCALE_DEFAULT));
-            etiqueta_FondPantallaEsp.setIcon(icono);
-            this.repaint();
-            llenarComboEspecialistas();
+        Icon icono = new ImageIcon(fondoPantalla.getImage().getScaledInstance(etiqueta_FondPantallaEsp.getWidth(), etiqueta_FondPantallaEsp.getHeight(), Image.SCALE_DEFAULT));
+        etiqueta_FondPantallaEsp.setIcon(icono);
+        this.repaint();
+        deshabilitarBotones();
+        llenarComboEspecialistas();
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -50,8 +49,9 @@ public class Especialistas extends javax.swing.JFrame {
         jtb_DatosEspecialistas1 = new javax.swing.JTable();
         btn_Nuevo = new javax.swing.JButton();
         btn_Editar = new javax.swing.JButton();
-        btn_Guardar = new javax.swing.JButton();
+        btn_Limpiar = new javax.swing.JButton();
         cmb_Espe = new javax.swing.JComboBox<>();
+        btn_Guardar1 = new javax.swing.JButton();
         etiqueta_FondPantallaEsp = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -105,17 +105,17 @@ public class Especialistas extends javax.swing.JFrame {
         jlb_Matricula.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jlb_Matricula.setText("Matricula");
         getContentPane().add(jlb_Matricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 235, 73, 28));
-        getContentPane().add(txt_Matricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, 136, -1));
-        getContentPane().add(txt_FechaNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 180, 90, -1));
-        getContentPane().add(txt_Celular, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 136, -1));
-        getContentPane().add(txt_Apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 136, -1));
+        getContentPane().add(txt_Matricula, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, 160, -1));
+        getContentPane().add(txt_FechaNac, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 180, 115, -1));
+        getContentPane().add(txt_Celular, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 160, -1));
+        getContentPane().add(txt_Apellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 120, 160, -1));
 
         txt_Nombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txt_NombreActionPerformed(evt);
             }
         });
-        getContentPane().add(txt_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 136, -1));
+        getContentPane().add(txt_Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 160, -1));
 
         jtb_DatosEspecialistas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -138,7 +138,7 @@ public class Especialistas extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jtb_DatosEspecialistas);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 340, 270));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, 360, 270));
 
         jtb_DatosEspecialistas1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -161,7 +161,7 @@ public class Especialistas extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jtb_DatosEspecialistas1);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 340, 270));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 80, 360, 270));
 
         btn_Nuevo.setBackground(new java.awt.Color(102, 102, 255));
         btn_Nuevo.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
@@ -182,20 +182,32 @@ public class Especialistas extends javax.swing.JFrame {
         btn_Editar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         getContentPane().add(btn_Editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 100, -1));
 
-        btn_Guardar.setBackground(new java.awt.Color(102, 102, 255));
-        btn_Guardar.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        btn_Guardar.setForeground(new java.awt.Color(0, 0, 0));
-        btn_Guardar.setText("Guardar");
-        btn_Guardar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btn_Guardar.addActionListener(new java.awt.event.ActionListener() {
+        btn_Limpiar.setBackground(new java.awt.Color(102, 102, 255));
+        btn_Limpiar.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        btn_Limpiar.setForeground(new java.awt.Color(0, 0, 0));
+        btn_Limpiar.setText("Limpiar Campos");
+        btn_Limpiar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_Limpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_GuardarActionPerformed(evt);
+                btn_LimpiarActionPerformed(evt);
             }
         });
-        getContentPane().add(btn_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 100, -1));
+        getContentPane().add(btn_Limpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 320, 100, -1));
 
-        getContentPane().add(cmb_Espe, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 208, 125, 22));
-        getContentPane().add(etiqueta_FondPantallaEsp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 480));
+        getContentPane().add(cmb_Espe, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 208, 150, 22));
+
+        btn_Guardar1.setBackground(new java.awt.Color(102, 102, 255));
+        btn_Guardar1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        btn_Guardar1.setForeground(new java.awt.Color(0, 0, 0));
+        btn_Guardar1.setText("Guardar");
+        btn_Guardar1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_Guardar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_Guardar1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_Guardar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 100, -1));
+        getContentPane().add(etiqueta_FondPantallaEsp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 480));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -209,21 +221,20 @@ public class Especialistas extends javax.swing.JFrame {
         habilitarBotones();
     }//GEN-LAST:event_btn_NuevoActionPerformed
 
-    private void btn_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_GuardarActionPerformed
-        String nombre = txt_Nombre.getText();
-        String apellido = txt_Apellido.getText();
-        String celular = txt_Celular.getText();
-        ////////////DATOS DEL COMBOBOX
-        String matricula = txt_Matricula.getText();
-        String fechaNac = txt_FechaNac.getText();
+    private void btn_LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LimpiarActionPerformed
+        limpiarCampos();
+        deshabilitarBotones();
+    }//GEN-LAST:event_btn_LimpiarActionPerformed
 
-    }//GEN-LAST:event_btn_GuardarActionPerformed
+    private void btn_Guardar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Guardar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_Guardar1ActionPerformed
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Editar;
-    private javax.swing.JButton btn_Guardar;
+    private javax.swing.JButton btn_Guardar1;
+    private javax.swing.JButton btn_Limpiar;
     private javax.swing.JButton btn_Nuevo;
     private javax.swing.JComboBox<String> cmb_Espe;
     private javax.swing.JLabel etiqueta_FondPantallaEsp;
@@ -246,22 +257,26 @@ public class Especialistas extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void deshabilitarBotones() {
-        btn_Guardar.setEnabled(false);
+        btn_Limpiar.setEnabled(false);
+        btn_Editar.setEnabled(false);
+        btn_Guardar1.setEnabled(false);
+        btn_Nuevo.setEnabled(true);
         txt_Nombre.setEditable(false);
         txt_Apellido.setEditable(false);
-////////////DATOS DEL COMBOBOX
+        cmb_Espe.setEnabled(false);
         txt_FechaNac.setEditable(false);
         txt_Matricula.setEditable(false);
         txt_Celular.setEditable(false);
     }
 
     private void habilitarBotones() {
-        btn_Guardar.setEnabled(true);
+        btn_Limpiar.setEnabled(true);
+        btn_Guardar1.setEnabled(true);
         btn_Nuevo.setEnabled(false);
         btn_Editar.setEnabled(false);
+        cmb_Espe.setEnabled(true);
         txt_Nombre.setEditable(true);
         txt_Apellido.setEditable(true);
-////////////DATOS DEL COMBOBOX
         txt_FechaNac.setEditable(true);
         txt_Matricula.setEditable(true);
         txt_Celular.setEditable(true);
@@ -271,15 +286,16 @@ public class Especialistas extends javax.swing.JFrame {
         txt_Nombre.setText("");
         txt_Apellido.setText("");
         txt_Celular.setText("");
-////////////DATOS DEL COMBOBOX
+        cmb_Espe.selectWithKeyChar('s');
         txt_FechaNac.setText("");
         txt_Matricula.setText("");
     }
 
     private void llenarComboEspecialistas() {
-        for (Object object : col) {
-            
+        Especialidades[] listaEspe = Especialidades.values();
+        for (Especialidades espe : listaEspe) {
+            cmb_Espe.addItem(espe.toString());
         }
-        cmb_Espe.addItem(item);
+
     }
 }

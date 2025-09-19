@@ -1,8 +1,9 @@
+ramasoft\cmbandera\ventanas\Especialistas$6.class
+ramasoft\cmbandera\logica\Especialidades.class
+ramasoft\cmbandera\logica\Consulta.class
 ramasoft\cmbandera\logica\Especialista.class
 ramasoft\cmbandera\logica\Paciente.class
 ramasoft\cmbandera\logica\Persona.class
-ramasoft\cmbandera\logica\Especialidades.class
 ramasoft\cmbandera\logica\HistoriaClinica.class
 ramasoft\cmbandera\Principal.class
-ramasoft\cmbandera\logica\Consulta.class
 ramasoft\cmbandera\logica\TipoSangre.class
