@@ -1,4 +1,3 @@
-
 package ramasoft.cmbandera2.percistencia;
 
 import java.io.Serializable;
@@ -15,18 +14,16 @@ import ramasoft.cmbandera2.percistencia.exceptions.NonexistentEntityException;
 
 /**
  *
- * @author BarrileteCosmico
+ * @author Ramiro Foglia
  */
 public class PersonaJpaController implements Serializable {
 
     public PersonaJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-
     public PersonaJpaController() {
         emf = Persistence.createEntityManagerFactory("CMBanderaPU");
-    }
-    
+    }    
     private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {

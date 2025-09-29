@@ -4,11 +4,13 @@ import java.awt.Image;
 import java.util.List;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
 import ramasoft.cmbandera2.logica.Controladora;
 import ramasoft.cmbandera2.logica.Especialista;
+import ramasoft.cmbandera2.logica.HistoriaClinica;
 import ramasoft.cmbandera2.logica.TipoEspecialidad;
 
 /**
@@ -18,22 +20,22 @@ import ramasoft.cmbandera2.logica.TipoEspecialidad;
 public class VentanaEspecialistas extends javax.swing.JFrame {
 
     Controladora control = null;
+    String titulo = "Consultorios Medicos Bandera";
 
     public VentanaEspecialistas() {
         control = new Controladora();
         initComponents();
         setResizable(false);
-//        setSize(840, 480);
-        setTitle("Consultorios Médicos Bandera");
-        llenarComboEspecialistas();
         setLocationRelativeTo(null);
-        deshabilitarBotones();
-        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Trabajando con Especialistas");        
+        llenarComboEspecialistas();        
+        deshabilitarBotones();          
         //Fondo de pantalla
         ImageIcon fondoPantalla = new ImageIcon("src/main/java/Imagenes/img4.png");
         Icon icono = new ImageIcon(fondoPantalla.getImage().getScaledInstance(etiqueta_FondoPantalla.getWidth(), etiqueta_FondoPantalla.getHeight(), Image.SCALE_DEFAULT));
         etiqueta_FondoPantalla.setIcon(icono);
         this.repaint();
+        setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     @SuppressWarnings("unchecked")
@@ -57,7 +59,7 @@ public class VentanaEspecialistas extends javax.swing.JFrame {
         btn_Eliminar = new javax.swing.JButton();
         btn_Limpiar = new javax.swing.JButton();
         btn_Guardar1 = new javax.swing.JButton();
-        btn_Editar1 = new javax.swing.JButton();
+        btn_Editar = new javax.swing.JButton();
         jp_TablaEspecialistas = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabla_Especialistas = new javax.swing.JTable();
@@ -181,12 +183,17 @@ public class VentanaEspecialistas extends javax.swing.JFrame {
         });
         getContentPane().add(btn_Guardar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 430, 120, 30));
 
-        btn_Editar1.setBackground(new java.awt.Color(102, 102, 255));
-        btn_Editar1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        btn_Editar1.setForeground(new java.awt.Color(0, 0, 0));
-        btn_Editar1.setText("Editar");
-        btn_Editar1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        getContentPane().add(btn_Editar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 430, 120, 30));
+        btn_Editar.setBackground(new java.awt.Color(102, 102, 255));
+        btn_Editar.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        btn_Editar.setForeground(new java.awt.Color(0, 0, 0));
+        btn_Editar.setText("Editar");
+        btn_Editar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_Editar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_EditarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btn_Editar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 430, 120, 30));
 
         jp_TablaEspecialistas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jp_TablaEspecialistas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -234,11 +241,13 @@ public class VentanaEspecialistas extends javax.swing.JFrame {
         String celular = txt_Celular.getText();
         String fecha = txt_FechaNac.getText();
         String espe = (String) cmb_Espe.getSelectedItem();
-        String matrcula = txt_Matricula.getText();
+        String matricula = txt_Matricula.getText();
+        
+        HistoriaClinica historiaClinica = new HistoriaClinica();
+//        control.guardarHistoriaClinica();
+        control.guardarEspecialista(nombre, apellido, celular, fecha, espe, matricula);
 
-        control.guardar(nombre, apellido, celular, fecha, espe, matrcula);
-
-        JOptionPane.showMessageDialog(this, "Los datos se guardaron correctramente");
+        mostrarMensaje("El Especialista fue dado de alta", "Info", titulo);
         CargarTabla();
         limpiarCampos();
         deshabilitarBotones();
@@ -247,7 +256,6 @@ public class VentanaEspecialistas extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         CargarTabla();
-
     }//GEN-LAST:event_formWindowOpened
 
     private void btn_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EliminarActionPerformed
@@ -256,23 +264,40 @@ public class VentanaEspecialistas extends javax.swing.JFrame {
             if (tabla_Especialistas.getSelectedRow() != -1) { //controlo si se eligio un fila
                 int num_espe = Integer.parseInt(String.valueOf(tabla_Especialistas.getValueAt(tabla_Especialistas.getSelectedRow(), 0)));
                 control.eliminarEspecialista(num_espe);
+                mostrarMensaje("El Especialista fue dado de baja", "Info", titulo);
                 CargarTabla();
                 deshabilitarBotones();
             } else {
-//                mostrarMensaje
-                JOptionPane.showMessageDialog(this, "Debe seleccionar un especialista");
+                mostrarMensaje("Debe seleccionar un Especialista", "Error", titulo);
                 deshabilitarBotones();
             }
         } else {
-            JOptionPane.showMessageDialog(this, "La Tabla esta Vacia");
+            mostrarMensaje("La Tabla esta Vacia", "Error", titulo);
             deshabilitarBotones();
         }
 
     }//GEN-LAST:event_btn_EliminarActionPerformed
 
+    private void btn_EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EditarActionPerformed
+        if (tabla_Especialistas.getRowCount() > 0) { // controlo que la tabla no este vacia
+            if (tabla_Especialistas.getSelectedRow() != -1) { //controlo si se eligio un fila
+                int num_espe = Integer.parseInt(String.valueOf(tabla_Especialistas.getValueAt(tabla_Especialistas.getSelectedRow(), 0)));
+                EditarEspecialista editEspe = new EditarEspecialista(num_espe);
+                editEspe.setVisible(true);                
+                this.dispose();
+            } else {
+                mostrarMensaje("Debe seleccionar un Especialista", "Error", titulo);
+                deshabilitarBotones();
+            }
+        } else {
+            mostrarMensaje("La Tabla esta Vacia", "Error", titulo);
+            deshabilitarBotones();
+        }
+    }//GEN-LAST:event_btn_EditarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_Editar1;
+    private javax.swing.JButton btn_Editar;
     private javax.swing.JButton btn_Eliminar;
     private javax.swing.JButton btn_Guardar1;
     private javax.swing.JButton btn_Limpiar;
@@ -299,7 +324,7 @@ public class VentanaEspecialistas extends javax.swing.JFrame {
     private void deshabilitarBotones() {
         btn_Limpiar.setEnabled(false);
         btn_Eliminar.setEnabled(true);
-        btn_Editar1.setEnabled(false);
+        btn_Editar.setEnabled(true);
         btn_Guardar1.setEnabled(false);
         btn_Nuevo.setEnabled(true);
         txt_Nombre.setEditable(false);
@@ -315,7 +340,7 @@ public class VentanaEspecialistas extends javax.swing.JFrame {
         btn_Guardar1.setEnabled(true);
         btn_Nuevo.setEnabled(false);
         btn_Eliminar.setEnabled(false);
-        btn_Editar1.setEnabled(false);
+        btn_Editar.setEnabled(false);
         cmb_Espe.setEnabled(true);
         txt_Nombre.setEditable(true);
         txt_Apellido.setEditable(true);
@@ -345,7 +370,7 @@ public class VentanaEspecialistas extends javax.swing.JFrame {
         //Defino el modelo que va a tener la tabla
         DefaultTableModel modeloTabla = new DefaultTableModel() {
             @Override
-            public boolean isCellEditable(int row, int column) {// con este metodo las filas y las columnas no se va a poder editar
+            public boolean isCellEditable(int row, int column) {// con este metodo las filas y las columnas no se van a poder editar
                 return false;
             }
         };
@@ -362,4 +387,17 @@ public class VentanaEspecialistas extends javax.swing.JFrame {
         }
         tabla_Especialistas.setModel(modeloTabla);
     }
+
+    private void mostrarMensaje(String mensaje, String tipo, String titulo) {
+        JOptionPane optionPane = new JOptionPane(mensaje); //Agrego el mensaje a la ventana de dialogo
+        //Compruebo que tipo de mensaje es
+        if (tipo.equals("Error")) {
+            optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+        } else if (tipo.equals("Info")) {
+            optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        }
+        JDialog diaLog = optionPane.createDialog(titulo); //Agrego el titulo a la ventana de dialogo
+        diaLog.setAlwaysOnTop(true);
+        diaLog.setVisible(true);
+    }    
 }

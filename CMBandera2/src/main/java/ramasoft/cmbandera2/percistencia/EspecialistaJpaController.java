@@ -14,18 +14,16 @@ import ramasoft.cmbandera2.percistencia.exceptions.NonexistentEntityException;
 
 /**
  *
- * @author BarrileteCosmico
+ * @author Ramiro Foglia
  */
 public class EspecialistaJpaController implements Serializable {
 
     public EspecialistaJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-
     public EspecialistaJpaController() {
         emf= Persistence.createEntityManagerFactory("CMBanderaPU");
     }
-    
     private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {

@@ -13,8 +13,7 @@ public class Inicio extends javax.swing.JFrame {
     
     public Inicio() {
         initComponents();
-        setResizable(false);
-        setSize(680, 450);
+        setResizable(false);        
         setTitle("Consultorios Medicos Bandera");
         setLocationRelativeTo(null);
         //Fondo de pantalla
@@ -67,6 +66,11 @@ public class Inicio extends javax.swing.JFrame {
         btn_Pacientes.setForeground(new java.awt.Color(0, 0, 0));
         btn_Pacientes.setText("Pacientes");
         btn_Pacientes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_Pacientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_PacientesActionPerformed(evt);
+            }
+        });
         getContentPane().add(btn_Pacientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 185, 39));
 
         btn_HistoriaClinica.setBackground(new java.awt.Color(102, 102, 255));
@@ -75,7 +79,7 @@ public class Inicio extends javax.swing.JFrame {
         btn_HistoriaClinica.setText("Historia Clinica");
         btn_HistoriaClinica.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         getContentPane().add(btn_HistoriaClinica, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 185, 39));
-        getContentPane().add(etiqueta_fotoInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 370, 290));
+        getContentPane().add(etiqueta_fotoInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 370, 290));
         getContentPane().add(etiqueta_fondoPantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 450));
 
         pack();
@@ -85,6 +89,11 @@ public class Inicio extends javax.swing.JFrame {
         VentanaEspecialistas especialista = new VentanaEspecialistas();
         especialista.setVisible(true);
     }//GEN-LAST:event_btn_EspecialistasActionPerformed
+
+    private void btn_PacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_PacientesActionPerformed
+        VentanaPaciente paciente = new VentanaPaciente();
+        paciente.setVisible(true);
+    }//GEN-LAST:event_btn_PacientesActionPerformed
 
     
 
